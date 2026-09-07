@@ -115,7 +115,7 @@ export const photos = {
   },
   withBowls: {
     src: "/photos/miki-with-bowls.jpg",
-    alt: "Miki sitting cross legged on the treatment table beside a set of singing bowls",
+    alt: "Miki sitting on a rug with a pink crystal singing bowl and striker, a gong on its stand behind her",
   },
   chimes: {
     src: "/photos/miki-chimes.jpg",

@@ -91,7 +91,7 @@ export default function Home() {
             <Photo
               src={photos.withBowls.src}
               alt={photos.withBowls.alt}
-              ratio="aspect-[4/3]"
+              ratio="aspect-[4/5]"
             />
           </Reveal>
         </div>
