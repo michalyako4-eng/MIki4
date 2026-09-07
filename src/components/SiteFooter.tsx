@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { logo, navLinks, site } from "@/content/site";
+import { bookLink, logo, navLinks, site } from "@/content/site";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -27,7 +27,7 @@ export function SiteFooter() {
           <div>
             <h2 className="text-sm font-semibold">Pages</h2>
             <ul className="mt-3 space-y-2">
-              {navLinks.map((link) => (
+              {[...navLinks, bookLink].map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

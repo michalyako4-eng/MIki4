@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { logo, navLinks, site } from "@/content/site";
+import { bookLink, logo, navLinks, site } from "@/content/site";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -67,10 +67,10 @@ export function SiteHeader() {
         </ul>
 
         <Link
-          href="/book"
+          href={bookLink.href}
           className="hidden rounded-full bg-rose px-3 py-2 text-sm font-semibold text-white transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-rose-deep active:scale-[0.98] md:inline-block"
         >
-          Book a session
+          {bookLink.label}
         </Link>
 
         {/* Hamburger. The two lines rotate into an X, they never disappear. */}
@@ -102,7 +102,7 @@ export function SiteHeader() {
         aria-hidden={!open}
       >
         <ul className="flex h-full flex-col justify-center gap-2 px-8">
-          {[...navLinks, { label: "Contact", href: "/book#contact" }].map(
+          {[...navLinks, bookLink].map(
             (link, index) => (
               <li
                 key={link.href}

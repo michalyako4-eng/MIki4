@@ -443,5 +443,7 @@ export const testimonials: Testimonial[] = [
 export const navLinks = [
   { label: "Sessions", href: "/services" },
   { label: "About", href: "/about" },
-  { label: "Book", href: "/book" },
 ];
+
+/** Booking is reached through the call to action, not a duplicate nav link. */
+export const bookLink = { label: "Book a session", href: "/book" };
