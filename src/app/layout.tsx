@@ -3,6 +3,7 @@ import { Geist } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { site, venues } from "@/content/site";
+import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
 const geist = Geist({
@@ -11,7 +12,6 @@ const geist = Geist({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? site.domain;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
