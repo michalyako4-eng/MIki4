@@ -8,7 +8,6 @@ import {
   ShieldCheck,
 } from "@phosphor-icons/react/dist/ssr";
 import { ButtonLink } from "@/components/Button";
-import { Faq } from "@/components/Faq";
 import { Photo } from "@/components/Photo";
 import { Modalities } from "@/components/Modalities";
 import { Reveal } from "@/components/Reveal";
@@ -17,7 +16,6 @@ import { TaglineReveal } from "@/components/TaglineReveal";
 import { Venues } from "@/components/Venues";
 import {
   benefits,
-  faqs,
   hero,
   intro,
   riskReversal,
@@ -25,7 +23,6 @@ import {
   photos,
   services,
   site,
-  steps,
   tagline,
   testimonials,
 } from "@/content/site";
@@ -38,17 +35,6 @@ const icons = {
   flower: Flower,
 } as const;
 
-/** Plain question and answer pairs, so AI answer engines can quote them. */
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.q,
-    acceptedAnswer: { "@type": "Answer", text: faq.a },
-  })),
-};
-
 export default function Home() {
   return (
     <>
@@ -56,12 +42,17 @@ export default function Home() {
       <section className="px-6 pb-16 pt-28">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.15fr_0.85fr]">
           <div>
-            <h1 className="hero-gradient-text max-w-[680px] text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="max-w-[680px] text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
               {hero.headline.map((line) => (
-                <span key={line} className="block">
-                  {line}
+                <span key={line} className="hero-gradient-text block">
+                  {/* Trailing space so extractors and screen readers do not
+                      run the lines together. */}
+                  {line}{" "}
                 </span>
               ))}
+              <span className="mt-4 block text-lg font-medium text-muted sm:text-xl">
+                {hero.headlineDescriptor}
+              </span>
             </h1>
 
             <p className="mt-8 max-w-[680px] text-lg text-muted">
@@ -144,48 +135,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── How it works ─────────────────────────────────────────────── */}
-      <section className="border-y border-line bg-sand px-6 py-12">
-        <div className="mx-auto w-full max-w-6xl">
-          <Reveal>
-            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
-              {sections.steps}
-            </h2>
-            <p className="mt-6 max-w-2xl text-lg text-muted">
-              {sections.stepsNote}
-            </p>
-          </Reveal>
-
-          <Reveal delay={80} className="mt-12">
-            <Photo
-              src={photos.handsOverChest.src}
-              alt={photos.handsOverChest.alt}
-              ratio="aspect-[16/10] md:aspect-[21/9]"
-              sizes="(min-width: 1024px) 1024px, 100vw"
-            />
-          </Reveal>
-
-          <ol className="mt-8 grid gap-8 md:grid-cols-3">
-            {steps.map((step, index) => (
-              <Reveal
-                as="li"
-                key={step.number}
-                delay={index * 100}
-                className="rounded-2xl border border-line bg-surface p-8"
-              >
-                <span className="text-sm font-semibold text-rose">
-                  {step.number}
-                </span>
-                <h3 className="mt-4 text-xl font-semibold tracking-tight">
-                  {step.title}
-                </h3>
-                <p className="mt-3 text-base text-muted">{step.body}</p>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </section>
-
       {/* ─── Modalities ───────────────────────────────────────────────── */}
       <section className="px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
@@ -221,12 +170,16 @@ export default function Home() {
                 key={service.slug}
                 service={service}
                 delay={index * 80}
+                summaryOnly
               />
             ))}
           </ul>
 
-          <Reveal className="mt-12">
-            <ButtonLink href="/book">Book a session</ButtonLink>
+          <Reveal className="mt-12 flex flex-wrap gap-3">
+            <ButtonLink href="/services">What each session involves</ButtonLink>
+            <ButtonLink href="/book" variant="secondary">
+              Book a session
+            </ButtonLink>
           </Reveal>
         </div>
       </section>
@@ -294,20 +247,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── FAQ ──────────────────────────────────────────────────────── */}
-      <section className="px-6 py-12">
-        <div className="mx-auto w-full max-w-6xl">
-          <Reveal>
-            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
-              {sections.faq}
-            </h2>
-          </Reveal>
-          <div className="mt-12">
-            <Faq />
-          </div>
-        </div>
-      </section>
-
       {/* ─── Final CTA ────────────────────────────────────────────────── */}
       <section className="border-t border-line bg-sand px-6 py-20">
         <div className="mx-auto w-full max-w-6xl">
@@ -341,10 +280,6 @@ export default function Home() {
         </div>
       </section>
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
     </>
   );
 }

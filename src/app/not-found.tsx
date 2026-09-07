@@ -1,6 +1,19 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/Button";
 import { navLinks } from "@/content/site";
 import Link from "next/link";
+
+/**
+ * Without this the 404 inherits the homepage title and a canonical pointing at
+ * the homepage, while also being noindex. noindex plus a canonical to another
+ * URL is a conflicting pair of signals, so the canonical is cleared here.
+ */
+export const metadata: Metadata = {
+  title: "Page not found",
+  description: "That page is not here. Links back to the rest of the site.",
+  alternates: { canonical: null },
+  robots: { index: false, follow: true },
+};
 
 export default function NotFound() {
   return (

@@ -5,6 +5,11 @@ export const metadata: Metadata = {
   title: "Privacy",
   description: "What this website collects, why, and how to have it deleted.",
   alternates: { canonical: "/privacy" },
+  openGraph: {
+    url: "/privacy",
+    title: "Privacy",
+  },
+  twitter: { title: "Privacy" },
 };
 
 /**
@@ -32,8 +37,7 @@ export default function PrivacyPage() {
             <p className="mt-4 text-base text-muted">
               Your name, your email address, your phone number if you choose to
               give it, and whatever you write in the message. It is emailed
-              directly to {site.contact.email} and is not stored in a database on
-              this website.
+              directly to Miki and is not stored in a database on this website.
             </p>
           </div>
 
@@ -71,7 +75,7 @@ export default function PrivacyPage() {
               Having your details removed
             </h2>
             <p className="mt-4 text-base text-muted">
-              Email {site.contact.email} and ask, and everything held about you
+              Call {site.contact.phone} and ask, and everything held about you
               is deleted. No reason needed and no follow up questions.
             </p>
           </div>

@@ -2,12 +2,18 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/Button";
 import { Photo } from "@/components/Photo";
 import { Reveal } from "@/components/Reveal";
-import { about, photos, site } from "@/content/site";
+import { about, photos } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: `Meet ${site.practitioner}, a Usui Reiki Master practising in ${site.location.city}. Nineteen years in hospital administration before the table.`,
+  description:
+    "Miki (Michal) Yakobovich is a Reiki Master and Access Bars practitioner in Alamo, California. Her Reiki practice began with helping her son fall asleep.",
   alternates: { canonical: "/about" },
+  openGraph: {
+    url: "/about",
+    title: "About Miki",
+  },
+  twitter: { title: "About Miki" },
 };
 
 export default function AboutPage() {

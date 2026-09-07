@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   description:
     "Book a Reiki or Access Bars session with Miki in Alamo. Sixty minutes $111, ninety minutes $160. Call, or send a message and she will reply within a day.",
   alternates: { canonical: "/book" },
+  openGraph: {
+    url: "/book",
+    title: "Book a session",
+  },
+  twitter: { title: "Book a session" },
 };
 
 export default function BookPage() {
@@ -38,15 +43,17 @@ export default function BookPage() {
                 {site.contact.phone}
               </a>
             </li>
-            <li>
-              <a
-                href={`mailto:${site.contact.email}`}
-                className="inline-flex items-center gap-3 text-lg underline-offset-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-rose-deep hover:underline"
-              >
-                <Envelope size={22} weight="light" className="text-rose" />
-                {site.contact.email}
-              </a>
-            </li>
+            {site.contact.email ? (
+              <li>
+                <a
+                  href={`mailto:${site.contact.email}`}
+                  className="inline-flex items-center gap-3 text-lg underline-offset-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-rose-deep hover:underline"
+                >
+                  <Envelope size={22} weight="light" className="text-rose" />
+                  {site.contact.email}
+                </a>
+              </li>
+            ) : null}
             <li className="inline-flex items-center gap-3 text-lg text-muted">
               <MapPin size={22} weight="light" className="text-rose" />
               {site.location.city}, {site.location.region}

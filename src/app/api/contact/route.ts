@@ -73,11 +73,11 @@ export async function POST(request: Request) {
   const from = process.env.CONTACT_FROM_EMAIL;
   const to = process.env.CONTACT_TO_EMAIL ?? site.contact.email;
 
-  if (!apiKey || !from) {
+  if (!apiKey || !from || !to) {
     // Nothing is silently dropped. In development the enquiry lands in the
     // server log so it is still readable while email is being set up.
     console.warn(
-      "[contact] RESEND_API_KEY or CONTACT_FROM_EMAIL is not set. Enquiry not emailed:",
+      "[contact] RESEND_API_KEY, CONTACT_FROM_EMAIL or CONTACT_TO_EMAIL is not set. Enquiry not emailed:",
       data,
     );
     return NextResponse.json(

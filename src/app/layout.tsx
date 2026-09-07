@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { site, venues } from "@/content/site";
+import { logo, photos, site } from "@/content/site";
 import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
@@ -16,11 +16,12 @@ const geist = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${site.businessName} · Reiki in ${site.location.city} and Walnut Creek`,
+    default: `${site.businessName} · Reiki and Access Bars in ${site.location.city}, CA`,
     template: `%s · ${site.businessName}`,
   },
+  // Kept under 155 characters so it is not truncated in search results.
   description:
-    "Reiki and Access Bars sessions with Miki, at Reiki Harmony Wellness Studio in Alamo and at the Spa at Forma Gym in Walnut Creek. Gentle touch or no touch, and you stay fully clothed.",
+    "Reiki and Access Bars in Alamo, California. Gentle touch, or no touch at all, and you stay fully clothed. 60 minutes $111, 90 minutes $160.",
   keywords: [
     "Reiki",
     "Reiki Alamo",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
-    url: siteUrl,
+    url: "/",
     siteName: site.businessName,
     title: `${site.businessName} · ${site.brandTagline}`,
     description:
@@ -48,36 +49,119 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-/** Tells Google and AI answer engines this is a real local business. */
-const localBusiness = {
+/**
+ * One linked entity graph, shared by every page.
+ *
+ * Every node carries an @id so the six copies resolve to one business rather
+ * than six anonymous duplicates, and so Service and Person can point at it.
+ *
+ * Deliberately absent:
+ *  - aggregateRating / review: there are no real reviews yet, and inventing
+ *    them is a Google spam policy violation.
+ *  - openingHoursSpecification and geo: not confirmed with Miki. Fabricated
+ *    hours on a local business are worse than no hours.
+ *  - any Offer for the Forma Gym sessions: an Offer asserts this business
+ *    sells that service, and the site says the opposite.
+ */
+const graph = {
   "@context": "https://schema.org",
-  "@type": "HealthAndBeautyBusiness",
-  name: site.businessName,
-  alternateName: site.fullName,
-  url: siteUrl,
-  email: site.contact.email,
-  telephone: site.contact.phone,
-  slogan: site.brandTagline,
-  description:
-    "Reiki and Access Bars sessions with Miki (Michal) Yakobovich, a Reiki Master practising in Alamo and Walnut Creek, California.",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: site.location.streetAddress,
-    addressLocality: site.location.city,
-    addressRegion: site.location.region,
-    postalCode: site.location.postalCode,
-    addressCountry: "US",
-  },
-  areaServed: site.location.serviceArea,
-  sameAs: [site.social.instagram],
-  makesOffer: venues.map((venue) => ({
-    "@type": "Offer",
-    itemOffered: {
-      "@type": "Service",
-      name: `Reiki at ${venue.name}`,
-      areaServed: venue.locality,
+  "@graph": [
+    {
+      "@type": "HealthAndBeautyBusiness",
+      "@id": `${siteUrl}/#business`,
+      name: site.businessName,
+      url: siteUrl,
+      logo: `${siteUrl}${logo.wordmark.src}`,
+      image: [
+        `${siteUrl}${photos.inStudio.src}`,
+        `${siteUrl}${photos.withBowls.src}`,
+        `${siteUrl}${photos.atHead.src}`,
+      ],
+      telephone: "+1-925-286-4654",
+      ...(site.contact.email ? { email: site.contact.email } : {}),
+      slogan: site.brandTagline,
+      priceRange: "$111-$160",
+      currenciesAccepted: "USD",
+      description:
+        "Reiki and Access Bars sessions with Miki (Michal) Yakobovich, a Reiki Master practising in Alamo, California.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: site.location.streetAddress,
+        addressLocality: site.location.city,
+        addressRegion: site.location.region,
+        postalCode: site.location.postalCode,
+        addressCountry: "US",
+      },
+      areaServed: ["Alamo", "Danville", "Walnut Creek"].map((name) => ({
+        "@type": "City",
+        name,
+        address: {
+          "@type": "PostalAddress",
+          addressRegion: "CA",
+          addressCountry: "US",
+        },
+      })),
+      sameAs: [site.social.instagram],
+      founder: { "@id": `${siteUrl}/#miki` },
+      employee: { "@id": `${siteUrl}/#miki` },
+      knowsAbout: [
+        "Reiki",
+        "Usui Reiki",
+        "Access Bars",
+        "Sound healing",
+        "Energy healing",
+      ],
     },
-  })),
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#miki`,
+      name: site.fullName,
+      alternateName: ["Miki Yakobovich", "Miki"],
+      jobTitle: "Reiki Master",
+      description:
+        "Usui Reiki Master and Access Bars practitioner in Alamo, California.",
+      image: `${siteUrl}${photos.inStudio.src}`,
+      url: `${siteUrl}/about`,
+      telephone: "+1-925-286-4654",
+      worksFor: { "@id": `${siteUrl}/#business` },
+      workLocation: { "@id": `${siteUrl}/#studio` },
+      sameAs: [site.social.instagram],
+      knowsAbout: ["Reiki", "Access Bars", "Sound healing", "Crystal healing"],
+      hasCredential: [
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "certification",
+          name: "Reiki Master, Usui system",
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "certification",
+          name: "Access Bars Practitioner",
+        },
+      ],
+    },
+    {
+      "@type": "Place",
+      "@id": `${siteUrl}/#studio`,
+      name: "Reiki Harmony Wellness Studio",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: site.location.streetAddress,
+        addressLocality: site.location.city,
+        addressRegion: site.location.region,
+        postalCode: site.location.postalCode,
+        addressCountry: "US",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: site.businessName,
+      inLanguage: "en-US",
+      publisher: { "@id": `${siteUrl}/#business` },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -97,7 +181,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(graph) }}
         />
       </body>
     </html>

@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description:
     "Booking, cancellation and what Reiki is and is not, stated plainly.",
   alternates: { canonical: "/terms" },
+  openGraph: {
+    url: "/terms",
+    title: "Terms",
+  },
+  twitter: { title: "Terms" },
 };
 
 /** TODO:CONFIRM — a plain language starting point, not legal advice. */
@@ -91,7 +96,7 @@ export default function TermsPage() {
           <div>
             <h2 className="text-2xl font-semibold tracking-tight">Questions</h2>
             <p className="mt-4 text-base text-muted">
-              Email {site.contact.email} or call {site.contact.phone}.
+              Call {site.contact.phone}, or use the form on the booking page.
             </p>
           </div>
         </div>

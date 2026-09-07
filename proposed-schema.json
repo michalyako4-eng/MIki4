@@ -1,0 +1,349 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HealthAndBeautyBusiness",
+        "@id": "https://miki4.com/#business",
+        "name": "MIKI Healing",
+        "url": "https://miki4.com",
+        "logo": "https://miki4.com/logo/miki-wordmark.png",
+        "image": [
+          "https://miki4.com/photos/miki-in-studio.jpg",
+          "https://miki4.com/photos/miki-with-bowls.jpg",
+          "https://miki4.com/photos/miki-at-head.jpg"
+        ],
+        "email": "miki.yako@formagym.com",
+        "telephone": "+1-925-286-4654",
+        "slogan": "Energy · Awareness · Healing",
+        "priceRange": "$111-$160",
+        "currenciesAccepted": "USD",
+        "description": "Reiki and Access Bars sessions with Miki (Michal) Yakobovich, a Reiki Master practising in Alamo and Walnut Creek, California.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "11B Orchard Ct.",
+          "addressLocality": "Alamo",
+          "addressRegion": "CA",
+          "postalCode": "94507",
+          "addressCountry": "US"
+        },
+        "areaServed": [
+          {
+            "@type": "City",
+            "name": "Alamo",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "CA",
+              "addressCountry": "US"
+            }
+          },
+          {
+            "@type": "City",
+            "name": "Danville",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "CA",
+              "addressCountry": "US"
+            }
+          },
+          {
+            "@type": "City",
+            "name": "Walnut Creek",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "CA",
+              "addressCountry": "US"
+            }
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/miki.healing/"
+        ],
+        "founder": {
+          "@id": "https://miki4.com/#miki"
+        },
+        "employee": {
+          "@id": "https://miki4.com/#miki"
+        },
+        "knowsAbout": [
+          "Reiki",
+          "Usui Reiki",
+          "Access Bars",
+          "Sound healing",
+          "Energy healing"
+        ],
+        "hasOfferCatalog": {
+          "@id": "https://miki4.com/services#catalog"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://miki4.com/#miki",
+        "name": "Michal Yakobovich",
+        "alternateName": [
+          "Miki Yakobovich",
+          "Miki"
+        ],
+        "jobTitle": "Reiki Master",
+        "description": "Usui Reiki Master and Access Bars practitioner in Alamo, California. Nineteen years in hospital administration before moving to full time practice.",
+        "image": "https://miki4.com/photos/miki-in-studio.jpg",
+        "url": "https://miki4.com/about",
+        "telephone": "+1-925-286-4654",
+        "email": "miki.yako@formagym.com",
+        "worksFor": {
+          "@id": "https://miki4.com/#business"
+        },
+        "workLocation": {
+          "@id": "https://miki4.com/#studio"
+        },
+        "sameAs": [
+          "https://www.instagram.com/miki.healing/"
+        ],
+        "knowsAbout": [
+          "Reiki",
+          "Access Bars",
+          "Sound healing",
+          "Crystal healing"
+        ],
+        "hasCredential": [
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "certification",
+            "name": "Reiki Master, Usui system"
+          },
+          {
+            "@type": "EducationalOccupationalCredential",
+            "credentialCategory": "certification",
+            "name": "Access Bars Practitioner"
+          }
+        ]
+      },
+      {
+        "@type": "Place",
+        "@id": "https://miki4.com/#studio",
+        "name": "Reiki Harmony Wellness Studio",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "11B Orchard Ct.",
+          "addressLocality": "Alamo",
+          "addressRegion": "CA",
+          "postalCode": "94507",
+          "addressCountry": "US"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://miki4.com/#website",
+        "url": "https://miki4.com",
+        "name": "MIKI Healing",
+        "inLanguage": "en-US",
+        "publisher": {
+          "@id": "https://miki4.com/#business"
+        }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        "@id": "https://miki4.com/services#reiki",
+        "name": "Reiki session",
+        "serviceType": "Reiki",
+        "description": "Reiki is a Japanese practice developed in the early twentieth century by Mikao Usui. A session creates the conditions for deep relaxation, inner balance, and emotional and physical well being.",
+        "url": "https://miki4.com/services",
+        "image": "https://miki4.com/photos/hands-over-chest.jpg",
+        "provider": {
+          "@id": "https://miki4.com/#business"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Alamo",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+          }
+        },
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "60 minute Reiki session",
+            "price": "111",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://miki4.com/book",
+            "seller": {
+              "@id": "https://miki4.com/#business"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "111",
+              "priceCurrency": "USD",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": 60,
+                "unitCode": "MIN"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "90 minute Reiki session",
+            "price": "160",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://miki4.com/book",
+            "seller": {
+              "@id": "https://miki4.com/#business"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "160",
+              "priceCurrency": "USD",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": 90,
+                "unitCode": "MIN"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://miki4.com/services#access-bars",
+        "name": "Access Bars session",
+        "serviceType": "Access Bars",
+        "description": "A gentle hands on practice that lightly touches thirty two points on the head. Most people find it deeply relaxing and leave feeling lighter and more present.",
+        "url": "https://miki4.com/services",
+        "image": "https://miki4.com/photos/hands-at-head.jpg",
+        "provider": {
+          "@id": "https://miki4.com/#business"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Alamo",
+          "address": {
+            "@type": "PostalAddress",
+            "addressRegion": "CA",
+            "addressCountry": "US"
+          }
+        },
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "60 minute Access Bars session",
+            "price": "111",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://miki4.com/book",
+            "seller": {
+              "@id": "https://miki4.com/#business"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "111",
+              "priceCurrency": "USD",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": 60,
+                "unitCode": "MIN"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "90 minute Access Bars session",
+            "price": "160",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://miki4.com/book",
+            "seller": {
+              "@id": "https://miki4.com/#business"
+            },
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "160",
+              "priceCurrency": "USD",
+              "referenceQuantity": {
+                "@type": "QuantitativeValue",
+                "value": 90,
+                "unitCode": "MIN"
+              }
+            }
+          }
+        ]
+      },
+      {
+        "@type": "OfferCatalog",
+        "@id": "https://miki4.com/services#catalog",
+        "name": "Sessions",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://miki4.com/services#reiki"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://miki4.com/services#access-bars"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://miki4.com/services#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://miki4.com"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Sessions",
+            "item": "https://miki4.com/services"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": "https://miki4.com/book#webpage",
+    "url": "https://miki4.com/book",
+    "name": "Book a session",
+    "description": "Book a Reiki or Access Bars session with Miki in Alamo. Sixty minutes $111, ninety minutes $160.",
+    "isPartOf": {
+      "@id": "https://miki4.com/#website"
+    },
+    "about": {
+      "@id": "https://miki4.com/#business"
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://miki4.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Book a session",
+          "item": "https://miki4.com/book"
+        }
+      ]
+    }
+  }
+]

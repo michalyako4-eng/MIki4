@@ -6,11 +6,14 @@ export function ServiceCard({
   service,
   delay = 0,
   headingLevel: Heading = "h3",
+  summaryOnly = false,
   children,
 }: {
   service: Service;
   delay?: number;
   headingLevel?: "h2" | "h3";
+  /** Home page shows a teaser; the full list lives on /services. */
+  summaryOnly?: boolean;
   children?: React.ReactNode;
 }) {
   return (
@@ -46,6 +49,7 @@ export function ServiceCard({
 
         <p className="mt-6 text-base text-muted">{service.summary}</p>
 
+        {summaryOnly ? null : (
         <ul className="mt-6 space-y-2">
           {service.includes.map((item) => (
             <li key={item} className="flex gap-3 text-sm text-muted">
@@ -56,6 +60,7 @@ export function ServiceCard({
             </li>
           ))}
         </ul>
+        )}
 
         {children ? <div className="mt-auto pt-8">{children}</div> : null}
       </div>

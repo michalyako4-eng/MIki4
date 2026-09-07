@@ -18,10 +18,16 @@ export function SiteFooter() {
               className="h-20 w-auto"
             />
             <p className="mt-3 max-w-xs text-sm text-muted">
-              Reiki and Access Bars with {site.practitioner}, at Reiki Harmony
-              Wellness Studio in {site.location.city} and at the Spa at Forma
-              Gym in Walnut Creek.
+              Reiki and Access Bars with {site.fullName}.
             </p>
+            <address className="mt-4 max-w-xs text-sm not-italic text-muted">
+              Reiki Harmony Wellness Studio
+              <br />
+              {site.location.streetAddress}
+              <br />
+              {site.location.city}, {site.location.region}{" "}
+              {site.location.postalCode}
+            </address>
           </div>
 
           <div>
@@ -43,14 +49,16 @@ export function SiteFooter() {
           <div>
             <h2 className="text-sm font-semibold">Get in touch</h2>
             <ul className="mt-3 space-y-2">
-              <li>
-                <a
-                  href={`mailto:${site.contact.email}`}
-                  className="text-sm text-muted underline-offset-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-ink hover:underline"
-                >
-                  {site.contact.email}
-                </a>
-              </li>
+              {site.contact.email ? (
+                <li>
+                  <a
+                    href={`mailto:${site.contact.email}`}
+                    className="text-sm text-muted underline-offset-4 transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-ink hover:underline"
+                  >
+                    {site.contact.email}
+                  </a>
+                </li>
+              ) : null}
               <li>
                 <a
                   href={site.contact.phoneHref}

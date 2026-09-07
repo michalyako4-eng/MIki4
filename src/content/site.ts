@@ -31,9 +31,19 @@ export const site = {
   contact: {
     phone: "(925) 286-4654",
     phoneHref: "tel:+19252864654",
-    // TODO:CONFIRM — which address she wants on a public website. Her Forma
-    // address is already public in the gym newsletter; a personal one is not.
-    email: "miki.yako@formagym.com",
+    /**
+     * TODO — create hello@miki4.com (or miki@miki4.com) and put it here.
+     *
+     * Deliberately null for now. It previously showed miki.yako@formagym.com,
+     * which is Forma Gym's domain: a different company, in a different city.
+     * That was the contact in the JSON-LD on all six pages, so every page told
+     * search engines this business belongs to Forma. It also contradicted the
+     * privacy page, which promises messages come to Miki only.
+     *
+     * While this is null the site shows the phone and the form instead. Set it
+     * to a real, working address and it reappears everywhere automatically.
+     */
+    email: null as string | null,
   },
 
   social: {
@@ -180,6 +190,8 @@ export const modalities = [
 export const hero = {
   // Drawn from Miki's own description of what she offers.
   headline: ["A space to slow down,", "and simply receive care."],
+  // The H1 needs the topic and the place in it, not just the feeling.
+  headlineDescriptor: "Reiki and Access Bars in Alamo, California",
   subheadline:
     "Reiki and Access Bars with Miki, at Reiki Harmony Wellness Studio in Alamo and at the Spa at Forma Gym in Walnut Creek. Gentle touch, or no touch at all if you prefer. You stay fully clothed throughout.",
   ctaLabel: "Book a session",
@@ -237,7 +249,7 @@ export const benefits = [
   {
     icon: "moon",
     title: "Sleep that comes more easily",
-    body: "The reason Miki started practising in the first place, and still one of the most common reasons people book.",
+    body: "The reason Miki started practising in the first place, and still one of the most common reasons people book. Reiki supports rest, it does not treat a sleep disorder.",
   },
   {
     icon: "heartbeat",
@@ -247,12 +259,12 @@ export const benefits = [
   {
     icon: "handsPraying",
     title: "Lower anxiety",
-    body: "Often booked by people facing a medical procedure, and by people who simply cannot put a worry down.",
+    body: "Often booked by people facing a medical procedure, and by people who simply cannot put a worry down. Alongside your care, never instead of it.",
   },
   {
     icon: "leaf",
     title: "Improved mood and sense of well being",
-    body: "A space where nothing is asked of you, and where you can reconnect with yourself for an hour.",
+    body: "A space where nothing is asked of you, and where you can reconnect with yourself for an hour. Not a treatment for any diagnosed condition.",
   },
   {
     icon: "flower",
@@ -325,7 +337,7 @@ export const services: Service[] = [
     slug: "access-bars",
     name: "Access Bars session",
     summary:
-      "A gentle hands on practice that lightly touches thirty two points on the head. Each point is associated with a different area of life, such as creativity, communication, money, peace, and hopes and dreams. Most people find it deeply relaxing and leave feeling lighter and more present.",
+      "A gentle hands on practice that lightly touches thirty two points on the head. Each point is associated with a different area of life, such as creativity, communication, peace, and how you relate to work and money. Most people find it deeply relaxing and leave feeling lighter and more present.",
     pricing: sessionPricing,
     includes: [
       "We talk first about what is present and what you would like to create",
@@ -365,7 +377,7 @@ export const faqs = [
   },
   {
     q: "What is Access Bars?",
-    a: "Access Bars is a gentle hands on practice that lightly touches thirty two points on the head. Each point is associated with a different area of life, such as creativity, communication, money, peace, and hopes and dreams. The intention is to help release limiting patterns and make space for more ease, clarity and possibility. Many people find it deeply relaxing and leave feeling lighter and calmer.",
+    a: "Access Bars is a gentle hands on practice that lightly touches thirty two points on the head. Each point is associated with a different area of life, such as creativity, communication, peace, and how you relate to work and money. The intention is to help release limiting patterns and make space for more ease, clarity and possibility. Many people find it deeply relaxing and leave feeling lighter and calmer.",
   },
   {
     q: "How is an Access Bars session different from Reiki?",
@@ -377,7 +389,7 @@ export const faqs = [
   },
   {
     q: "Can I book during cancer treatment or surgery recovery?",
-    a: "Yes. Reiki is often used alongside conventional treatment during cancer care, recovery from surgery and chronic pain. Please tell your care team you are booking, and tell me what your body is currently managing so I can adjust.",
+    a: "Often yes, but check with your oncology or surgical team first and let me know what they say. Reiki is used alongside conventional cancer care at many hospitals, never in place of it. If your team advises against touch, or against any complementary therapy right now, follow them. Tell me what your body is currently managing so I can adjust.",
   },
   {
     q: "What does a session feel like?",
