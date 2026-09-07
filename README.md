@@ -58,7 +58,7 @@ shows a "book by message or phone" panel, so the page is never broken.
 ```ts
 scheduler: {
   provider: "Calendly",
-  embedUrl: "https://calendly.com/mikireiki/60min",
+  embedUrl: "https://calendly.com/miki-healing/60min",
 },
 ```
 
