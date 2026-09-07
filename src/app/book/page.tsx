@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Envelope, MapPin, Phone } from "@phosphor-icons/react/dist/ssr";
 import { ContactForm } from "@/components/ContactForm";
+import { Photo } from "@/components/Photo";
 import { Reveal } from "@/components/Reveal";
 import { Scheduler } from "@/components/Scheduler";
 import { Venues } from "@/components/Venues";
-import { riskReversal, site } from "@/content/site";
+import { photos, riskReversal, site } from "@/content/site";
 
 export const metadata: Metadata = {
   title: "Book a session",
@@ -21,8 +22,9 @@ export default function BookPage() {
             Book a session
           </h1>
           <p className="mt-8 max-w-[680px] text-lg text-muted">
-            Reiki and Access Bars, in Alamo and at Forma Gym in Walnut Creek.
-            If you would rather ask something first, the form further down comes
+            Reiki and Access Bars at the studio in Alamo. Sixty minutes is
+            $111, ninety minutes is $160, and both practices are priced the
+            same. If you would rather ask something first, the form below comes
             straight to me, and calling is always fine.
           </p>
         </div>
@@ -41,8 +43,7 @@ export default function BookPage() {
               Where to find me
             </h2>
             <p className="mt-6 max-w-2xl text-lg text-muted">
-              Private sessions in Alamo are arranged with me directly. Forma
-              sessions go through the front desk at the gym.
+              Sessions booked here are at the studio in Alamo.
             </p>
           </Reveal>
           <div className="mt-16">
@@ -100,9 +101,19 @@ export default function BookPage() {
             </Reveal>
           </div>
 
-          <Reveal delay={100} className="rounded-2xl border border-line bg-surface p-8">
-            <ContactForm />
-          </Reveal>
+          <div>
+            <Reveal className="mb-8">
+              <Photo
+                src={photos.holdingFeet.src}
+                alt={photos.holdingFeet.alt}
+                ratio="aspect-[16/10]"
+                sizes="(min-width: 768px) 55vw, 100vw"
+              />
+            </Reveal>
+            <Reveal delay={100} className="rounded-2xl border border-line bg-surface p-8">
+              <ContactForm />
+            </Reveal>
+          </div>
         </div>
       </section>
     </>

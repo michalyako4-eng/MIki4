@@ -66,8 +66,9 @@ export const venues = [
     locality: "Alamo",
     address: "11B Orchard Ct., Alamo, CA 94507",
     detail:
-      "Private Reiki and Access Bars sessions, in a quiet room with crystals, tuning forks and sound bowls to hand.",
-    hours: null as string[] | null,
+      "Where I see clients for Reiki and Access Bars. A quiet room, with crystals, tuning forks and sound bowls to hand.",
+    // The only place bookings are taken.
+    bookable: true,
     bookingLabel: "Call or message me directly",
     bookingHref: "tel:+19252864654",
   },
@@ -76,42 +77,111 @@ export const venues = [
     locality: "Walnut Creek",
     address: "Walnut Creek, CA",
     detail:
-      "Reiki sessions alongside the spa's massage and skin care treatments. Sauna, steam and jacuzzi can be enjoyed before or after.",
-    hours: [
-      "Mondays, 9:00am to 1:00pm",
-      "Thursdays, 3:30pm to 7:30pm",
-    ] as string[] | null,
-    bookingLabel: "Forma front desk · (925) 932-6400",
-    bookingHref: "tel:+19259326400",
+      "I also practise at the Spa at Forma Gym, alongside their massage and skin care treatments. Those sessions are arranged by Forma for their members, and are not booked through this site.",
+    // Listed for credibility only. Deliberately no booking route.
+    bookable: false,
+    bookingLabel: null,
+    bookingHref: null,
   },
 ];
 
-/* ── Brand assets and photography ─────────────────────────────────────────── */
+/* ── Brand assets ─────────────────────────────────────────────────────────── */
 
 export const logo = {
   wordmark: { src: "/logo/miki-wordmark.png", width: 1523, height: 403 },
   lockup: { src: "/logo/miki-lockup.png", width: 1200, height: 688 },
 };
 
+/* ── Photography ──────────────────────────────────────────────────────────── */
+
 export const photos = {
-  hands: {
-    src: "/photos/session-shoulders.jpg",
-    alt: "Miki resting both hands lightly at the collarbones of a client lying clothed on the treatment table, eyes closed",
+  atHead: {
+    src: "/photos/miki-at-head.jpg",
+    alt: "Miki standing at the head of the treatment table, hands resting either side of a client's head",
   },
-  portrait: {
-    src: "/photos/miki-portrait.jpg",
-    alt: "Miki standing beside a set of tuned chimes in her treatment room, holding the striker",
+  handsOverChest: {
+    src: "/photos/hands-over-chest.jpg",
+    alt: "Miki's hands hovering just above a client's chest as she rests, fully clothed, on the table",
   },
-  atTable: {
-    src: "/photos/miki-at-table.jpg",
-    alt: "Miki holding a client's ankles at the foot of the treatment table, a chakra chart on the wall behind her",
+  handsAtHead: {
+    src: "/photos/hands-at-head.jpg",
+    alt: "Miki's hands resting lightly on either side of a client's head, the client's eyes closed",
   },
-  feet: {
-    src: "/photos/session-hands.jpg",
-    alt: "Miki cradling a client's hand and wrist during a session",
+  handsOnForehead: {
+    src: "/photos/hands-on-forehead.jpg",
+    alt: "Miki's fingertips resting lightly on a client's forehead",
   },
-  // Also available but not yet placed: /photos/miki-with-client.jpg
+  withBowls: {
+    src: "/photos/miki-with-bowls.jpg",
+    alt: "Miki sitting cross legged on the treatment table beside a set of singing bowls",
+  },
+  chimes: {
+    src: "/photos/miki-chimes.jpg",
+    alt: "Miki standing beside a rack of tuned chimes, smiling",
+  },
+  inStudio: {
+    src: "/photos/miki-in-studio.jpg",
+    alt: "Miki standing in her treatment room, baskets of crystals on the shelves behind her",
+  },
+  holdingFeet: {
+    src: "/photos/miki-holding-feet.jpg",
+    alt: "Miki smiling as she holds a client's feet at the end of the treatment table",
+  },
+  crystalBowls: {
+    src: "/photos/crystal-bowls.jpg",
+    alt: "Miki seated on the floor among a set of crystal singing bowls",
+  },
 };
+
+/* ── Modalities ───────────────────────────────────────────────────────────── */
+/**
+ * TODO:CONFIRM — Miki's own writing names crystals, tuning forks and sound
+ * healing. The pendulum and the gong are here because they appear in her
+ * photographs, so check she wants them described this way, or at all.
+ */
+
+export const modalities = [
+  {
+    name: "Crystals",
+    body: "Placed on or around the body where they suit what we are working with.",
+    photo: {
+      src: "/photos/crystals.jpg",
+      alt: "Stones placed along a client's abdomen as Miki rests her hands beside them",
+    },
+  },
+  {
+    name: "Tuning forks",
+    body: "Held near the body, working through sound rather than touch.",
+    photo: {
+      src: "/photos/tuning-forks.jpg",
+      alt: "Miki holding a tuning fork and striker beside the treatment table",
+    },
+  },
+  {
+    name: "Pendulum",
+    body: "Held above the body, to help me settle on where to spend time.",
+    photo: {
+      src: "/photos/pendulum.jpg",
+      alt: "Miki holding a pendulum above a client resting on the table",
+    },
+  },
+  {
+    name: "Singing bowls",
+    body: "Played over and around the body, so the sound carries through the room.",
+    photo: {
+      src: "/photos/singing-bowl.jpg",
+      alt: "Miki holding a brass singing bowl above a client's head",
+    },
+  },
+  {
+    name: "Gong",
+    body: "For sound sessions, where the whole room becomes part of the treatment.",
+    photo: {
+      src: "/photos/gong.jpg",
+      alt: "Miki seated on the floor beside a large gong, striker in hand",
+    },
+  },
+];
 
 /* ── Hero ─────────────────────────────────────────────────────────────────── */
 
@@ -154,9 +224,13 @@ export const sections = {
   stepsNote: "Every session is different. This is the shape of all of them.",
   services: "Sessions",
   servicesNote:
-    "Reiki and Access Bars, privately in Alamo or through the spa at Forma Gym.",
-  venues: "Where to find me",
-  venuesNote: "Two places, booked two different ways.",
+    "Reiki and Access Bars are priced the same. Both are held at the studio in Alamo.",
+  modalities: "Sometimes part of a session",
+  modalitiesNote:
+    "Not every session uses these. What I bring in depends on what feels supportive on the day.",
+  venues: "Where I practise",
+  venuesNote:
+    "Sessions booked through this site are in Alamo. I also see clients at Forma Gym in Walnut Creek.",
   faq: "Questions people ask before a first session",
   finalCta: "A space to slow down, and simply receive care",
   finalCtaBody:
@@ -228,60 +302,46 @@ export const steps = [
 export type Service = {
   slug: string;
   name: string;
-  duration: string | null;
-  price: string | null;
   summary: string;
+  /** Real prices, confirmed. Both offerings are priced the same. */
+  pricing: { duration: string; price: string }[];
   includes: string[];
-  bookingNote?: string;
+  photo: { src: string; alt: string };
 };
+
+const sessionPricing = [
+  { duration: "60 minutes", price: "$111" },
+  { duration: "90 minutes", price: "$160" },
+];
 
 export const services: Service[] = [
   {
     slug: "reiki-session",
     name: "Reiki session",
-    duration: null,
-    price: null,
     summary:
       "Reiki is a Japanese practice developed in the early twentieth century by Mikao Usui. The word means universal life energy. A session creates the conditions for deep relaxation, inner balance, and emotional and physical well being.",
+    pricing: sessionPricing,
     includes: [
       "A conversation first about what brought you in",
       "Gentle hands on work, or no touch at all if you prefer",
       "Crystals, tuning forks or sound healing where they suit the session",
       "Simple practices to take home with you",
     ],
-    bookingNote:
-      "At Reiki Harmony Wellness Studio, 11B Orchard Ct. in Alamo. Call or send a message to arrange a time.",
+    photo: photos.handsAtHead,
   },
   {
     slug: "access-bars",
     name: "Access Bars session",
-    duration: null,
-    price: null,
     summary:
       "A gentle hands on practice that lightly touches thirty two points on the head. Each point is associated with a different area of life, such as creativity, communication, money, peace, and hopes and dreams. Most people find it deeply relaxing and leave feeling lighter and more present.",
+    pricing: sessionPricing,
     includes: [
       "We talk first about what is present and what you would like to create",
       "Thirty two points on the head, touched lightly",
       "Questions asked throughout, to open up possibilities rather than to find quick answers",
       "Attention to what is already bringing you joy, not only where you feel stuck",
     ],
-    bookingNote:
-      "At Reiki Harmony Wellness Studio, 11B Orchard Ct. in Alamo. Call or send a message to arrange a time.",
-  },
-  {
-    slug: "reiki-at-forma",
-    name: "Reiki at Forma Gym, Walnut Creek",
-    duration: null,
-    price: null,
-    summary:
-      "I also practise at the Spa at Forma Gym in Walnut Creek, alongside their massage and skin care treatments. Sauna, steam and jacuzzi can be enjoyed before or after a session.",
-    includes: [
-      "Mondays, 9:00am to 1:00pm",
-      "Thursdays, 3:30pm to 7:30pm",
-      "Booked through the Forma front desk",
-    ],
-    bookingNote:
-      "Schedule at the Forma front desk or call (925) 932-6400. Questions can come to me at miki.yako@formagym.com.",
+    photo: photos.handsOnForehead,
   },
 ];
 
@@ -337,7 +397,7 @@ export const faqs = [
   },
   {
     q: "Where do you practise?",
-    a: "Two places. Private sessions are at Reiki Harmony Wellness Studio, 11B Orchard Ct. in Alamo. I also practise at the Spa at Forma Gym in Walnut Creek on Mondays from 9:00am to 1:00pm and Thursdays from 3:30pm to 7:30pm, booked through their front desk.",
+    a: "I see clients at Reiki Harmony Wellness Studio, 11B Orchard Ct. in Alamo, and that is where sessions booked through this site take place. I also practise at the Spa at Forma Gym in Walnut Creek, though those sessions are arranged by Forma for their members.",
   },
 ];
 

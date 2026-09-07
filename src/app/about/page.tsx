@@ -33,8 +33,8 @@ export default function AboutPage() {
 
           <div className="md:sticky md:top-32">
             <Photo
-              src={photos.portrait.src}
-              alt={photos.portrait.alt}
+              src={photos.chimes.src}
+              alt={photos.chimes.alt}
               ratio="aspect-[3/4]"
               priority
             />
@@ -49,6 +49,15 @@ export default function AboutPage() {
               Training and background
             </h2>
           </Reveal>
+          <Reveal className="mt-12">
+            <Photo
+              src={photos.inStudio.src}
+              alt={photos.inStudio.alt}
+              ratio="aspect-[16/10] md:aspect-[21/9]"
+              sizes="(min-width: 1024px) 1024px, 100vw"
+            />
+          </Reveal>
+
           <ul className="mt-12 grid gap-4 md:grid-cols-2">
             {about.credentials.map((credential, index) => (
               <Reveal

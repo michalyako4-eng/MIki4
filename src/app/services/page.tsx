@@ -3,6 +3,7 @@ import { ButtonLink } from "@/components/Button";
 import { Faq } from "@/components/Faq";
 import { Photo } from "@/components/Photo";
 import { Reveal } from "@/components/Reveal";
+import { ServiceCard } from "@/components/ServiceCard";
 import { Venues } from "@/components/Venues";
 import {
   photos,
@@ -15,7 +16,7 @@ import {
 export const metadata: Metadata = {
   title: "Sessions",
   description:
-    "Reiki and Access Bars sessions with Miki, privately at Reiki Harmony Wellness Studio in Alamo and through the Spa at Forma Gym in Walnut Creek.",
+    "Reiki and Access Bars sessions with Miki at Reiki Harmony Wellness Studio in Alamo. Sixty minutes $111, ninety minutes $160.",
   alternates: { canonical: "/services" },
 };
 
@@ -29,7 +30,8 @@ export default function ServicesPage() {
               Reiki and Access Bars
             </h1>
             <p className="mt-8 max-w-[680px] text-lg text-muted">
-              You stay fully clothed for all of these. Nothing is pressed or
+              Both are priced the same, and both are held at the studio in
+              Alamo. You stay fully clothed throughout. Nothing is pressed or
               manipulated, and you can ask me to stop at any point without
               explaining why.
             </p>
@@ -39,8 +41,8 @@ export default function ServicesPage() {
           </div>
 
           <Photo
-            src={photos.feet.src}
-            alt={photos.feet.alt}
+            src={photos.crystalBowls.src}
+            alt={photos.crystalBowls.alt}
             ratio="aspect-[3/4]"
             priority
           />
@@ -51,45 +53,16 @@ export default function ServicesPage() {
         <div className="mx-auto w-full max-w-6xl">
           <ul className="grid gap-8 md:grid-cols-2">
             {services.map((service, index) => (
-              <Reveal
-                as="li"
+              <ServiceCard
                 key={service.slug}
-                delay={Math.min(index, 3) * 80}
-                className="flex flex-col rounded-2xl border border-line bg-surface p-8"
+                service={service}
+                delay={index * 80}
+                headingLevel="h2"
               >
-                <div className="flex items-baseline justify-between gap-4">
-                  <h2 className="text-2xl font-semibold tracking-tight">
-                    {service.name}
-                  </h2>
-                  {service.price ? (
-                    <span className="text-2xl font-semibold text-rose">
-                      {service.price}
-                    </span>
-                  ) : null}
-                </div>
-                {service.duration ? (
-                  <p className="mt-2 text-sm text-muted">{service.duration}</p>
-                ) : null}
-                <p className="mt-6 text-base text-muted">{service.summary}</p>
-                <ul className="mt-6 space-y-2">
-                  {service.includes.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm text-muted">
-                      <span aria-hidden="true" className="text-rose">
-                        ·
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-8">
-                  {service.bookingNote ? (
-                    <p className="mb-6 text-sm text-muted">{service.bookingNote}</p>
-                  ) : null}
-                  <ButtonLink href="/book" variant="secondary">
-                    Book this
-                  </ButtonLink>
-                </div>
-              </Reveal>
+                <ButtonLink href="/book" variant="secondary">
+                  Book this
+                </ButtonLink>
+              </ServiceCard>
             ))}
           </ul>
         </div>

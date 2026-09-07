@@ -15,9 +15,8 @@ export function Scheduler() {
           Booking is by message or phone for now
         </h3>
         <p className="mt-3 max-w-md text-base text-muted">
-          For a private session in Alamo, call me or send the form below with a
-          few times that suit you. For a session at Forma Gym in Walnut Creek,
-          book at their front desk. If you would rather talk it through first,
+          Call me, or send the form below with a few times that suit you and I
+          will confirm within a day. If you would rather talk it through first,
           call me. I do not mind questions.
         </p>
         <a

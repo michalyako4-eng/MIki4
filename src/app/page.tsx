@@ -10,7 +10,9 @@ import {
 import { ButtonLink } from "@/components/Button";
 import { Faq } from "@/components/Faq";
 import { Photo } from "@/components/Photo";
+import { Modalities } from "@/components/Modalities";
 import { Reveal } from "@/components/Reveal";
+import { ServiceCard } from "@/components/ServiceCard";
 import { TaglineReveal } from "@/components/TaglineReveal";
 import { Venues } from "@/components/Venues";
 import {
@@ -77,8 +79,8 @@ export default function Home() {
           </div>
 
           <Photo
-            src={photos.atTable.src}
-            alt={photos.atTable.alt}
+            src={photos.atHead.src}
+            alt={photos.atHead.alt}
             ratio="aspect-[3/4]"
             priority
           />
@@ -87,12 +89,19 @@ export default function Home() {
 
       {/* ─── Problem to solution ──────────────────────────────────────── */}
       <section className="border-y border-line bg-sand px-6 py-24">
-        <div className="mx-auto w-full max-w-6xl">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-16 md:grid-cols-[1.1fr_0.9fr]">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
               {intro.heading}
             </h2>
             <p className="mt-6 max-w-2xl text-lg text-muted">{intro.body}</p>
+          </Reveal>
+          <Reveal delay={100}>
+            <Photo
+              src={photos.withBowls.src}
+              alt={photos.withBowls.alt}
+              ratio="aspect-[4/5]"
+            />
           </Reveal>
         </div>
       </section>
@@ -149,8 +158,8 @@ export default function Home() {
 
           <Reveal delay={80} className="mt-16">
             <Photo
-              src={photos.hands.src}
-              alt={photos.hands.alt}
+              src={photos.handsOverChest.src}
+              alt={photos.handsOverChest.alt}
               ratio="aspect-[16/10] md:aspect-[21/9]"
               sizes="(min-width: 1024px) 1024px, 100vw"
             />
@@ -177,7 +186,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Sessions and pricing ─────────────────────────────────────── */}
+      {/* ─── Modalities ───────────────────────────────────────────────── */}
+      <section className="px-6 py-24">
+        <div className="mx-auto w-full max-w-6xl">
+          <Reveal>
+            <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
+              {sections.modalities}
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg text-muted">
+              {sections.modalitiesNote}
+            </p>
+          </Reveal>
+          <div className="mt-16">
+            <Modalities />
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Sessions ─────────────────────────────────────────────────── */}
       <section className="px-6 py-24">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
@@ -191,42 +217,11 @@ export default function Home() {
 
           <ul className="mt-16 grid gap-8 md:grid-cols-2">
             {services.map((service, index) => (
-              <Reveal
-                as="li"
+              <ServiceCard
                 key={service.slug}
-                delay={Math.min(index, 3) * 80}
-                className="flex flex-col rounded-2xl border border-line bg-surface p-8"
-              >
-                <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="text-xl font-semibold tracking-tight">
-                    {service.name}
-                  </h3>
-                  {service.price ? (
-                    <span className="text-xl font-semibold text-rose">
-                      {service.price}
-                    </span>
-                  ) : null}
-                </div>
-                {service.duration ? (
-                  <p className="mt-2 text-sm text-muted">{service.duration}</p>
-                ) : null}
-                <p className="mt-4 text-base text-muted">{service.summary}</p>
-                <ul className="mt-6 space-y-2">
-                  {service.includes.map((item) => (
-                    <li key={item} className="flex gap-3 text-sm text-muted">
-                      <span aria-hidden="true" className="text-rose">
-                        ·
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                {service.bookingNote ? (
-                  <p className="mt-auto pt-8 text-sm text-muted">
-                    {service.bookingNote}
-                  </p>
-                ) : null}
-              </Reveal>
+                service={service}
+                delay={index * 80}
+              />
             ))}
           </ul>
 

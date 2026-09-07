@@ -157,9 +157,7 @@ export function ContactForm() {
           <option value="">I am not sure yet</option>
           {services.map((service) => (
             <option key={service.slug} value={service.name}>
-              {[service.name, service.duration, service.price]
-                .filter(Boolean)
-                .join(" · ")}
+              {service.name}
             </option>
           ))}
         </select>
