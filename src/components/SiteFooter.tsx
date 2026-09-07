@@ -7,7 +7,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-line bg-sand">
-      <div className="mx-auto w-full max-w-6xl px-6 py-16">
+      <div className="mx-auto w-full max-w-6xl px-6 py-12">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
             <Image

@@ -53,8 +53,8 @@ export default function Home() {
   return (
     <>
       {/* ─── Hero ─────────────────────────────────────────────────────── */}
-      <section className="px-6 pb-24 pt-40 md:pt-48">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-16 md:grid-cols-[1.15fr_0.85fr]">
+      <section className="px-6 pb-16 pt-28">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.15fr_0.85fr]">
           <div>
             <h1 className="hero-gradient-text max-w-[680px] text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
               {hero.headline.map((line) => (
@@ -68,7 +68,7 @@ export default function Home() {
               {hero.subheadline}
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <ButtonLink href={hero.ctaHref}>{hero.ctaLabel}</ButtonLink>
               <ButtonLink href={hero.secondaryHref} variant="secondary">
                 {hero.secondaryLabel}
@@ -88,8 +88,8 @@ export default function Home() {
       </section>
 
       {/* ─── Problem to solution ──────────────────────────────────────── */}
-      <section className="border-y border-line bg-sand px-6 py-24">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-16 md:grid-cols-[1.1fr_0.9fr]">
+      <section className="border-y border-line bg-sand px-6 py-12">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.1fr_0.9fr]">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
               {intro.heading}
@@ -100,21 +100,21 @@ export default function Home() {
             <Photo
               src={photos.withBowls.src}
               alt={photos.withBowls.alt}
-              ratio="aspect-[4/5]"
+              ratio="aspect-[4/3]"
             />
           </Reveal>
         </div>
       </section>
 
       {/* ─── Tagline reveal ───────────────────────────────────────────── */}
-      <section className="px-6 py-32">
+      <section className="px-6 py-20">
         <div className="mx-auto w-full max-w-6xl">
           <TaglineReveal lines={tagline.lines} />
         </div>
       </section>
 
       {/* ─── Benefits ─────────────────────────────────────────────────── */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
@@ -122,7 +122,7 @@ export default function Home() {
             </h2>
           </Reveal>
 
-          <ul className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-12 flex flex-wrap justify-center gap-8">
             {benefits.map((benefit, index) => {
               const Icon = icons[benefit.icon as keyof typeof icons];
               return (
@@ -130,7 +130,7 @@ export default function Home() {
                   as="li"
                   key={benefit.title}
                   delay={Math.min(index, 4) * 80}
-                  className="rounded-2xl border border-line bg-surface p-8"
+                  className="w-full sm:w-[calc(50%-16px)] lg:w-[calc(33.333%-21.334px)] rounded-2xl border border-line bg-surface p-8"
                 >
                   <Icon size={28} weight="light" className="text-rose" />
                   <h3 className="mt-6 text-xl font-semibold tracking-tight">
@@ -145,7 +145,7 @@ export default function Home() {
       </section>
 
       {/* ─── How it works ─────────────────────────────────────────────── */}
-      <section className="border-y border-line bg-sand px-6 py-24">
+      <section className="border-y border-line bg-sand px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
@@ -156,7 +156,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <Reveal delay={80} className="mt-16">
+          <Reveal delay={80} className="mt-12">
             <Photo
               src={photos.handsOverChest.src}
               alt={photos.handsOverChest.alt}
@@ -187,7 +187,7 @@ export default function Home() {
       </section>
 
       {/* ─── Modalities ───────────────────────────────────────────────── */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
@@ -197,14 +197,14 @@ export default function Home() {
               {sections.modalitiesNote}
             </p>
           </Reveal>
-          <div className="mt-16">
+          <div className="mt-12">
             <Modalities />
           </div>
         </div>
       </section>
 
       {/* ─── Sessions ─────────────────────────────────────────────────── */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
@@ -215,7 +215,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <ul className="mt-16 grid gap-8 md:grid-cols-2">
+          <ul className="mt-12 grid gap-8 md:grid-cols-2">
             {services.map((service, index) => (
               <ServiceCard
                 key={service.slug}
@@ -233,14 +233,14 @@ export default function Home() {
 
       {/* ─── Proof. Renders only once real testimonials exist. ────────── */}
       {testimonials.length > 0 ? (
-        <section className="border-y border-line bg-sand px-6 py-24">
+        <section className="border-y border-line bg-sand px-6 py-12">
           <div className="mx-auto w-full max-w-6xl">
             <Reveal>
               <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
                 In their words
               </h2>
             </Reveal>
-            <ul className="mt-16 grid gap-8 md:grid-cols-3">
+            <ul className="mt-12 grid gap-8 md:grid-cols-3">
               {testimonials.map((testimonial, index) => (
                 <Reveal
                   as="li"
@@ -263,7 +263,7 @@ export default function Home() {
       ) : null}
 
       {/* ─── Where to find me ─────────────────────────────────────────── */}
-      <section className="border-y border-line bg-sand px-6 py-24">
+      <section className="border-y border-line bg-sand px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
@@ -273,14 +273,14 @@ export default function Home() {
               {sections.venuesNote}
             </p>
           </Reveal>
-          <div className="mt-16">
+          <div className="mt-12">
             <Venues />
           </div>
         </div>
       </section>
 
       {/* ─── Risk reversal ────────────────────────────────────────────── */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal className="rounded-2xl border border-line bg-rose-soft p-12">
             <ShieldCheck size={28} weight="light" className="text-rose-deep" />
@@ -295,21 +295,21 @@ export default function Home() {
       </section>
 
       {/* ─── FAQ ──────────────────────────────────────────────────────── */}
-      <section className="px-6 py-24">
+      <section className="px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
               {sections.faq}
             </h2>
           </Reveal>
-          <div className="mt-16">
+          <div className="mt-12">
             <Faq />
           </div>
         </div>
       </section>
 
       {/* ─── Final CTA ────────────────────────────────────────────────── */}
-      <section className="border-t border-line bg-sand px-6 py-32">
+      <section className="border-t border-line bg-sand px-6 py-20">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-[680px] text-4xl font-semibold tracking-tight md:text-5xl">
@@ -318,7 +318,7 @@ export default function Home() {
             <p className="mt-8 max-w-[680px] text-lg text-muted">
               {sections.finalCtaBody}
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-3">
+            <div className="mt-8 flex flex-wrap items-center gap-3">
               <ButtonLink href="/book">Book a session</ButtonLink>
               <a
                 href={site.contact.phoneHref}

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 /** TODO:CONFIRM — a plain language starting point, not legal advice. */
 export default function TermsPage() {
   return (
-    <section className="px-6 pb-24 pt-40 md:pt-48">
+    <section className="px-6 pb-16 pt-28">
       <div className="mx-auto w-full max-w-3xl">
         <h1 className="hero-gradient-text text-5xl font-semibold tracking-tight">
           Terms

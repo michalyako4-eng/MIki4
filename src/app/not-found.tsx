@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <section className="px-6 pb-24 pt-40 md:pt-48">
+    <section className="px-6 pb-16 pt-28">
       <div className="mx-auto w-full max-w-3xl">
         <p className="text-sm font-semibold text-rose">Page not found</p>
         <h1 className="hero-gradient-text mt-4 max-w-[680px] text-5xl font-semibold tracking-tight md:text-6xl">
@@ -14,14 +14,14 @@ export default function NotFound() {
           Something was mistyped, or a link has moved. Here is the way back.
         </p>
 
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap gap-3">
           <ButtonLink href="/">Back to the start</ButtonLink>
           <ButtonLink href="/book" variant="secondary">
             Book a session
           </ButtonLink>
         </div>
 
-        <ul className="mt-16 flex flex-wrap gap-6 border-t border-line pt-8">
+        <ul className="mt-12 flex flex-wrap gap-6 border-t border-line pt-8">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link

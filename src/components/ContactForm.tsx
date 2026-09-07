@@ -92,27 +92,27 @@ export function ContactForm() {
         <input id="company" name="company" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div>
-        <label htmlFor="name" className={label}>
-          Your name
-        </label>
-        <input
-          id="name"
-          name="name"
-          autoComplete="name"
-          aria-invalid={Boolean(errors.name)}
-          aria-describedby={errors.name ? "name-error" : undefined}
-          className={`${field} mt-2 ${errors.name ? "border-rose" : ""}`}
-          placeholder="What should I call you?"
-        />
-        {errors.name ? (
-          <p id="name-error" className="mt-2 text-sm text-rose-deep">
-            {errors.name}
-          </p>
-        ) : null}
-      </div>
+      <div className="grid gap-6 md:grid-cols-3">
+        <div>
+          <label htmlFor="name" className={label}>
+            Your name
+          </label>
+          <input
+            id="name"
+            name="name"
+            autoComplete="name"
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            className={`${field} mt-2 ${errors.name ? "border-rose" : ""}`}
+            placeholder="What should I call you?"
+          />
+          {errors.name ? (
+            <p id="name-error" className="mt-2 text-sm text-rose-deep">
+              {errors.name}
+            </p>
+          ) : null}
+        </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
         <div>
           <label htmlFor="email" className={label}>
             Email

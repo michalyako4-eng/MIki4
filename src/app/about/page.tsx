@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="px-6 pb-24 pt-40 md:pt-48">
-        <div className="mx-auto grid w-full max-w-6xl items-start gap-16 md:grid-cols-2">
+      <section className="px-6 pb-16 pt-28">
+        <div className="mx-auto grid w-full max-w-6xl items-start gap-12 md:grid-cols-2">
           <div>
             <h1 className="hero-gradient-text max-w-[680px] text-5xl font-semibold tracking-tight md:text-6xl">
               {about.heading}
@@ -42,7 +42,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-line bg-sand px-6 py-24">
+      <section className="border-t border-line bg-sand px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="text-3xl font-semibold tracking-tight md:text-4xl">

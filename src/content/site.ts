@@ -36,14 +36,6 @@ export const site = {
     email: "miki.yako@formagym.com",
   },
 
-  // TODO:CONFIRM — paste a scheduling link here once an account exists.
-  // Works with Calendly, Acuity, Cal.com or SavvyCal. Until then the booking
-  // page shows a phone and message panel instead.
-  scheduler: {
-    provider: "Calendly",
-    embedUrl: null as string | null,
-  },
-
   social: {
     instagram: "https://www.instagram.com/miki.healing/",
     instagramHandle: "@miki.healing",

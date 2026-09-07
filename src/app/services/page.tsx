@@ -23,8 +23,8 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <section className="px-6 pb-24 pt-40 md:pt-48">
-        <div className="mx-auto grid w-full max-w-6xl items-center gap-16 md:grid-cols-[1.15fr_0.85fr]">
+      <section className="px-6 pb-16 pt-28">
+        <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.15fr_0.85fr]">
           <div>
             <h1 className="hero-gradient-text max-w-[680px] text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
               Reiki and Access Bars
@@ -49,7 +49,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16">
         <div className="mx-auto w-full max-w-6xl">
           <ul className="grid gap-8 md:grid-cols-2">
             {services.map((service, index) => (
@@ -68,27 +68,27 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
               {sections.venues}
             </h2>
           </Reveal>
-          <div className="mt-16">
+          <div className="mt-12">
             <Venues />
           </div>
         </div>
       </section>
 
-      <section className="border-y border-line bg-sand px-6 py-24">
+      <section className="border-y border-line bg-sand px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
               {sections.steps}
             </h2>
           </Reveal>
-          <ol className="mt-16 grid gap-8 md:grid-cols-3">
+          <ol className="mt-12 grid gap-8 md:grid-cols-3">
             {steps.map((step, index) => (
               <Reveal
                 as="li"
@@ -109,7 +109,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="px-6 py-24">
+      <section className="px-6 py-12">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal className="rounded-2xl border border-line bg-rose-soft p-12">
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight">
@@ -122,14 +122,14 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="px-6 pb-24">
+      <section className="px-6 pb-16">
         <div className="mx-auto w-full max-w-6xl">
           <Reveal>
             <h2 className="max-w-2xl text-3xl font-semibold tracking-tight md:text-4xl">
               {sections.faq}
             </h2>
           </Reveal>
-          <div className="mt-16">
+          <div className="mt-12">
             <Faq />
           </div>
         </div>

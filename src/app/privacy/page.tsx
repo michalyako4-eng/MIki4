@@ -14,7 +14,7 @@ export const metadata: Metadata = {
  */
 export default function PrivacyPage() {
   return (
-    <section className="px-6 pb-24 pt-40 md:pt-48">
+    <section className="px-6 pb-16 pt-28">
       <div className="mx-auto w-full max-w-3xl">
         <h1 className="hero-gradient-text text-5xl font-semibold tracking-tight">
           Privacy
@@ -53,18 +53,6 @@ export default function PrivacyPage() {
             <p className="mt-4 text-base text-muted">
               This website does not set advertising or tracking cookies, and it
               does not run an analytics tracker.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold tracking-tight">
-              Booking through the scheduler
-            </h2>
-            <p className="mt-4 text-base text-muted">
-              If you book through the scheduling tool embedded on the booking
-              page, that booking is handled by {site.scheduler.provider} under
-              their own privacy policy, and they will hold your name, email and
-              appointment time.
             </p>
           </div>
 
