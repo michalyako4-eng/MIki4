@@ -42,7 +42,7 @@ export function TaglineReveal({ lines }: { lines: readonly string[] }) {
   return (
     <p
       ref={ref}
-      className="max-w-[680px] text-4xl font-medium tracking-tight"
+      className="mx-auto max-w-[680px] text-center text-4xl font-medium tracking-tight"
     >
       {lines.map((line, lineIndex) => (
         <span key={lineIndex} className="block">

@@ -73,6 +73,26 @@ export async function POST(request: Request) {
   const from = process.env.CONTACT_FROM_EMAIL;
   const to = process.env.CONTACT_TO_EMAIL ?? site.contact.email;
 
+  /**
+   * A key copied from a masked field arrives full of bullet characters, which
+   * blow up as an opaque ByteString TypeError when the SDK builds the
+   * Authorization header. Catch it here and say what is actually wrong.
+   */
+  if (apiKey && !/^[\x20-\x7E]+$/.test(apiKey)) {
+    console.error(
+      "[contact] RESEND_API_KEY contains non-ASCII characters. It was most " +
+        "likely copied from Resend's masked display rather than the real key. " +
+        "Create a new key and copy it at the moment it is shown.",
+    );
+    return NextResponse.json(
+      {
+        error:
+          "The contact form is not set up correctly yet. Please call or use the phone number above.",
+      },
+      { status: 503 },
+    );
+  }
+
   if (!apiKey || !from || !to) {
     // Nothing is silently dropped. In development the enquiry lands in the
     // server log so it is still readable while email is being set up.
